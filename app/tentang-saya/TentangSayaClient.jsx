@@ -7,17 +7,17 @@ import { siteConfig } from '@/data/config'
    DATA — Matematika Murni
 ══════════════════════════════════════════ */
 const STATS = [
-  { value: '3+',  label: 'Tahun Studi'       },
-  { value: '20+', label: 'Siswa Ditutor'     },
-  { value: '5',   label: 'Proyek Riset'      },
+  { value: '3+', label: 'Tahun Studi' },
+  { value: '20+', label: 'Siswa Ditutor' },
+  { value: '5', label: 'Proyek Riset' },
 ]
 
 const SKILLS = [
-  { label: 'Analisis Real & Kalkulus',      pct: 93, color: '#c94f35' },
-  { label: 'Aljabar Linear & Abstrak',      pct: 89, color: '#8a7d3a' },
-  { label: 'Pemrograman (Python / R)',      pct: 82, color: '#6b1f3a' },
-  { label: 'Statistika & Probabilitas',     pct: 86, color: '#d4604a' },
-  { label: 'Teori Bilangan',                pct: 80, color: '#8a7d3a' },
+  { label: 'Analisis Real & Kalkulus', pct: 93, color: '#c94f35' },
+  { label: 'Aljabar Linear & Abstrak', pct: 89, color: '#8a7d3a' },
+  { label: 'Pemrograman (Python / R)', pct: 82, color: '#6b1f3a' },
+  { label: 'Statistika & Probabilitas', pct: 86, color: '#d4604a' },
+  { label: 'Teori Bilangan', pct: 80, color: '#8a7d3a' },
 ]
 
 const INTERESTS = [
@@ -96,7 +96,7 @@ function StatCard({ value, label, index, mounted }) {
    MAIN
 ══════════════════════════════════════════ */
 export default function TentangSayaClient() {
-  const [mounted, setMounted]    = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [skillRef, skillStarted] = useSkillReveal()
 
   useEffect(() => { setMounted(true) }, [])
@@ -197,71 +197,110 @@ export default function TentangSayaClient() {
           style={{ backgroundColor: '#e8a8c0', overflow: 'hidden', position: 'relative' }}
         >
           {/* Decorative rings */}
-          <div className="ts-deco" style={{ position:'absolute', top:'-80px', right:'-80px', width:'260px', height:'260px', borderRadius:'50%', border:'1.5px solid rgba(26,26,26,0.08)', pointerEvents:'none' }} />
-          <div className="ts-deco" style={{ position:'absolute', top:'-35px', right:'-35px', width:'150px', height:'150px', borderRadius:'50%', border:'1.5px solid rgba(26,26,26,0.06)', pointerEvents:'none' }} />
-          <div className="ts-deco" style={{ position:'absolute', bottom:'50px', left:'-55px', width:'170px', height:'170px', borderRadius:'50%', border:'1.5px solid rgba(26,26,26,0.05)', pointerEvents:'none' }} />
+          <div className="ts-deco" style={{ position: 'absolute', top: '-80px', right: '-80px', width: '260px', height: '260px', borderRadius: '50%', border: '1.5px solid rgba(26,26,26,0.08)', pointerEvents: 'none' }} />
+          <div className="ts-deco" style={{ position: 'absolute', top: '-35px', right: '-35px', width: '150px', height: '150px', borderRadius: '50%', border: '1.5px solid rgba(26,26,26,0.06)', pointerEvents: 'none' }} />
+          <div className="ts-deco" style={{ position: 'absolute', bottom: '50px', left: '-55px', width: '170px', height: '170px', borderRadius: '50%', border: '1.5px solid rgba(26,26,26,0.05)', pointerEvents: 'none' }} />
 
           {/* ── Avatar ── */}
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div
               className="ts-avatar-wrap"
-              style={{ position: 'relative', width: '130px', height: '130px', marginBottom: '24px' }}
+              style={{ position: 'relative', width: '160px', height: '200px', marginBottom: '24px' }}
             >
-              <div className="ts-avatar-sq-shadow" style={{
-                position: 'absolute', top: '10px', left: '10px',
-                width: '130px', height: '130px',
+              {/* Offset shadow */}
+              <div style={{
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                width: '160px',
+                height: '200px',
                 backgroundColor: 'rgba(26,26,26,0.2)',
               }} />
-              <div className="ts-avatar-sq" style={{
-                position: 'absolute', top: 0, left: 0,
-                width: '130px', height: '130px',
-                backgroundColor: '#1a1a1a',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+
+              {/* Card foto full cover */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '160px',
+                height: '200px',
                 overflow: 'hidden',
               }}>
-                {
-                  <img src="/image/18.jpg" alt={siteConfig.name}
-                       style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-                  }
-                <span className="ts-avatar-initials" style={{
-                  fontFamily: 'var(--font-display)', fontSize: '4.2rem',
-                  color: '#e8a8c0', letterSpacing: '0.04em',
-                  userSelect: 'none', lineHeight: 1,
-                }}>
-                  F
-                </span>
+                {siteConfig.avatarUrl
+                  ? <img
+                    src={siteConfig.avatarUrl}
+                    alt={siteConfig.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                  />
+                  : <div style={{
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: '#1a1a1a',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <span style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '5rem',
+                      color: '#e8a8c0',
+                      lineHeight: 1,
+                      userSelect: 'none',
+                    }}>
+                      {siteConfig.name.charAt(0)}
+                    </span>
+                  </div>
+                }
               </div>
+
               {/* Left accent stripe */}
               <div style={{
-                position: 'absolute', top: 0, left: '-10px',
-                width: '4px', height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: '-10px',
+                width: '4px',
+                height: '100%',
                 background: 'linear-gradient(to bottom, #c94f35, #6b1f3a)',
               }} />
-              {/* Bottom-right dot */}
+
+              {/* Bottom-right accent dot */}
               <div style={{
-                position: 'absolute', bottom: '-3px', right: '-3px',
-                width: '22px', height: '22px',
-                backgroundColor: '#c94f35', borderRadius: '50%',
-                border: '3px solid #e8a8c0', zIndex: 2,
+                position: 'absolute',
+                bottom: '-3px',
+                right: '-3px',
+                width: '22px',
+                height: '22px',
+                backgroundColor: '#c94f35',
+                borderRadius: '50%',
+                border: '3px solid #e8a8c0',
+                zIndex: 2,
               }} />
             </div>
 
+            {/* Name */}
             <p style={{
-              fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
-              letterSpacing: '0.03em', textTransform: 'uppercase',
-              color: '#1a1a1a', lineHeight: 1, marginBottom: '10px',
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
+              letterSpacing: '0.03em',
+              textTransform: 'uppercase',
+              color: '#1a1a1a',
+              lineHeight: 1,
+              marginBottom: '10px',
             }}>{siteConfig.name}</p>
 
+            {/* Role row */}
             <div className="ts-role-row" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '20px', height: '2px', backgroundColor: '#c94f35', flexShrink: 0 }} />
               <p style={{
-                fontFamily: 'var(--font-body)', fontWeight: 700,
-                fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontFamily: 'var(--font-body)',
+                fontWeight: 700,
+                fontSize: '0.6rem',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
                 color: 'rgba(26,26,26,0.6)',
               }}>{siteConfig.role}</p>
             </div>
           </div>
-
           {/* ── Motto ── */}
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div style={{
