@@ -4,68 +4,78 @@ import { useState, useEffect, useRef } from 'react'
 import { siteConfig } from '@/data/config'
 
 /* ══════════════════════════════════════════
-   DATA — edit isi sesuai pengalaman Nafis
+   DATA — Matematika Murni (Farell)
 ══════════════════════════════════════════ */
 const TIMELINE = [
   {
     id:       'kuliah',
-    year:     '2023 — Sekarang',
+    year:     '2022 — Sekarang',
     category: 'Pendidikan',
     color:    '#c94f35',
-    title:    'Mahasiswa Pendidikan Agama Islam',
-    place:    'UIN Sunan Ampel — Surabaya',
-    body:     'Menempuh pendidikan S1 Program Studi Pendidikan Agama Islam. Aktif dalam perkuliahan, diskusi akademik, dan kegiatan kemahasiswaan. Fokus pada kajian kurikulum PAI dan metode pembelajaran Islam modern.',
-    tags:     ['Akademik', 'PAI', 'S1'],
+    title:    'Mahasiswa Matematika Murni',
+    place:    'Universitas Airlangga— Suraba',
+    body:     'Menempuh pendidikan S1 Program Studi Matematika Murni. Fokus pada mata kuliah Analisis Real, Aljabar Abstrak, Teori Bilangan, dan Topologi. Aktif dalam diskusi akademik, seminar sains, dan kegiatan kemahasiswaan matematika.',
+    tags:     ['Akademik', 'Matematika', 'S1'],
   },
   {
-    id:       'bimbel',
+    id:       'tutor',
     year:     '2023 — Sekarang',
     category: 'Mengajar',
     color:    '#8a7d3a',
-    title:    'Guru Bimbingan Belajar',
-    place:    'Lembaga Bimbel Al-Falah — Surabaya',
-    body:     'Mengajar mata pelajaran PAI dan Bahasa Arab untuk siswa SMP dan SMA. Membantu siswa mempersiapkan ujian dan meningkatkan pemahaman materi keagamaan melalui metode pembelajaran interaktif.',
-    tags:     ['Guru', 'Bimbel', 'Bahasa Arab'],
+    title:    'Tutor Matematika',
+    place:    'Lembaga Bimbel EduMath — Surabaya',
+    body:     'Mengajar kalkulus, aljabar linear, dan statistika untuk siswa SMA dan mahasiswa semester awal. Merancang modul belajar mandiri berbasis problem-solving dan membantu siswa mempersiapkan ujian masuk perguruan tinggi serta olimpiade.',
+    tags:     ['Tutor', 'Kalkulus', 'Aljabar'],
   },
   {
-    id:       'kkn',
-    year:     '2025',
-    category: 'Pengabdian',
-    color:    '#6b1f3a',
-    title:    'Kuliah Kerja Nyata (KKN)',
-    place:    'Desa Sidoarjo — Jawa Timur',
-    body:     "Melaksanakan pengabdian masyarakat 40 hari. Program bimbingan belajar Al-Qur'an untuk anak desa, pelatihan literasi digital ibu PKK, dan penyuluhan keagamaan di masjid setempat.",
-    tags:     ['KKN', 'Komunitas', 'Pengabdian'],
-  },
-  {
-    id:       'ppl',
+    id:       'riset-komputasi',
     year:     '2024',
-    category: 'Praktik Mengajar',
+    category: 'Riset',
+    color:    '#6b1f3a',
+    title:    'Proyek Riset: Pemodelan Matematika',
+    place:    'Lab Komputasi — Departemen Matematika',
+    body:     'Terlibat dalam proyek riset pemodelan matematika menggunakan Python dan R. Fokus pada simulasi numerik untuk persamaan diferensial parsial dan visualisasi data. Hasil riset dipresentasikan dalam seminar internal departemen.',
+    tags:     ['Riset', 'Python', 'Pemodelan'],
+  },
+  {
+    id:       'olimpiade',
+    year:     '2023',
+    category: 'Prestasi',
     color:    '#d4604a',
-    title:    'Praktik Pengalaman Lapangan (PPL)',
-    place:    'MAN 1 Surabaya',
-    body:     'Praktik mengajar PAI di kelas X dan XI selama satu semester. Merancang RPP, melaksanakan pembelajaran aktif berbasis diskusi, dan mengevaluasi hasil belajar siswa secara berkala.',
-    tags:     ['PPL', 'MAN', 'Mengajar'],
+    title:    'Finalis Olimpiade Matematika Nasional',
+    place:    'Kompetisi Matematika Tingkat Nasional',
+    body:     'Lolos seleksi tingkat regional dan melaju ke babak final olimpiade matematika tingkat nasional. Soal mencakup kombinatorika, teori bilangan, geometri, dan aljabar tingkat lanjut. Pengalaman ini memperkuat kemampuan berpikir analitis dan kreatif.',
+    tags:     ['Olimpiade', 'Prestasi', 'Kompetisi'],
   },
   {
     id:       'organisasi',
     year:     '2023 — 2024',
     category: 'Organisasi',
     color:    '#8a7d3a',
-    title:    'Anggota HMJ PAI',
-    place:    'Himpunan Mahasiswa Jurusan — UIN Surabaya',
-    body:     'Aktif di divisi akademik HMJ PAI. Terlibat dalam seminar pendidikan Islam, lomba karya tulis ilmiah, dan diskusi kajian keislaman rutin bersama mahasiswa lintas angkatan.',
-    tags:     ['HMJ', 'Organisasi', 'Kepemimpinan'],
+    title:    'Koordinator Akademik HMJ Matematika',
+    place:    'Himpunan Mahasiswa Jurusan Matematika',
+    body:     'Menjabat sebagai koordinator divisi akademik. Menginisiasi program mentoring antar angkatan, pembuatan bank soal olimpiade, dan penyelenggaraan seminar matematika terapan bersama dosen dan alumni industri.',
+    tags:     ['HMJ', 'Kepemimpinan', 'Akademik'],
+  },
+  {
+    id:       'magang-data',
+    year:     '2024',
+    category: 'Magang',
+    color:    '#c94f35',
+    title:    'Magang Data Analyst',
+    place:    'PT. Solusi Analitika Indonesia — Surabaya',
+    body:     'Magang selama 3 bulan di divisi data analytics. Mengaplikasikan ilmu statistika dan pemrograman R untuk analisis data penjualan dan prediksi tren pasar. Membantu pengembangan dashboard visualisasi data menggunakan Python (Pandas, Matplotlib).',
+    tags:     ['Magang', 'Data', 'Statistika'],
   },
   {
     id:       'sma',
-    year:     '2020 — 2023',
+    year:     '2019 — 2022',
     category: 'Pendidikan',
     color:    '#c94f35',
-    title:    'Madrasah Aliyah',
-    place:    'MA Nurul Huda — Surabaya',
-    body:     'Lulus jurusan IPS dengan predikat memuaskan. Sekretaris OSIS, peserta lomba debat Bahasa Arab tingkat kota, dan koordinator kegiatan keagamaan sekolah.',
-    tags:     ['MA', 'OSIS', 'Prestasi'],
+    title:    'SMA Negeri — Jurusan IPA',
+    place:    'SMAN 5 — Surabaya',
+    body:     'Lulus dengan nilai tertinggi di bidang matematika dan fisika. Ketua ekstrakulikuler Karya Ilmiah Remaja (KIR), juara 1 olimpiade matematika tingkat kota, dan perwakilan sekolah di kompetisi sains regional.',
+    tags:     ['SMA', 'IPA', 'Olimpiade'],
   },
 ]
 
@@ -97,7 +107,6 @@ function TimelineCard({ item, side, delay }) {
   const [ref, seen] = useReveal()
   const [hov, setHov] = useState(false)
 
-  /* On mobile (side === 'mobile') card goes full-width left-aligned */
   const isMobile = side === 'mobile'
 
   return (
@@ -257,7 +266,7 @@ export default function PengalamanClient() {
           color:rgba(240,238,234,.5);
         }
 
-        /* ── MOBILE FILTER BAR (shown on mobile only) ── */
+        /* ── MOBILE FILTER BAR ── */
         .pgl-mobile-filter{
           display:none;
           background:#1a1a1a; padding:0 16px;
@@ -369,7 +378,6 @@ export default function PengalamanClient() {
         }
         .tl-arrow--outer{ z-index:1; }
         .tl-arrow--inner{ z-index:2; }
-        /* left card: arrow points right (toward center) */
         .tl-arrow--outer.tl-arrow--left{
           right:-14px;
           border-left:14px solid #1a1a1a;
@@ -380,7 +388,6 @@ export default function PengalamanClient() {
           border-left:12px solid #fff;
           border-right:none;
         }
-        /* right card: arrow points left (toward center) */
         .tl-arrow--outer.tl-arrow--right{
           left:-14px;
           border-right:14px solid #1a1a1a;
@@ -419,19 +426,11 @@ export default function PengalamanClient() {
 
         /* ═══════════════════════════════
            RESPONSIVE — Mobile (≤768px)
-           Single-column, spine on left
         ═══════════════════════════════ */
         @media(max-width:768px){
-          /* Hide desktop sidebar */
           .pgl-sidebar{ display:none; }
-
-          /* Show mobile filter bar */
           .pgl-mobile-filter{ display:flex; }
-
-          /* Spine moves to left */
           .pgl-spine{ left:15px; }
-
-          /* All cards: full width, margin-left for spine */
           .tl-card-wrap--left,
           .tl-card-wrap--right{
             justify-content:flex-start;
@@ -440,20 +439,10 @@ export default function PengalamanClient() {
             width:calc(100% - 44px);
             margin-left:44px;
           }
-          /* No zigzag animations on mobile — simple fade up */
-          .tl-card-wrap--left,
-          .tl-card-wrap--right{
-            /* override inline transform direction */
-          }
-          /* Hide desktop arrows */
           .tl-arrow{ display:none; }
-
-          /* Dot on left spine */
           .tl-dot--center{
             left:5px; top:22px;
           }
-
-          /* Timeline padding */
           .pgl-timeline{
             padding:24px 16px;
           }
