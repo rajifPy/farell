@@ -4,7 +4,7 @@ export const siteConfig = {
   description: 'Mahasiswa Matematika Murni yang aktif dalam riset, pengajaran, dan pengembangan sains.',
   role:        'Tutor & Researcher',
 
-  email: 'nafis[at]universitasanda.ac.id',
+  email: 'farel2025@fst.unair.ac.id',
 
   links: {
     linkedin:  'https://linkedin.com/in/username',
