@@ -219,11 +219,10 @@ export default function TentangSayaClient() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 overflow: 'hidden',
               }}>
-                {/*
-                  Punya foto? Ganti ini dengan:
-                  <img src="/foto-profil.jpg" alt={siteConfig.name}
+                {
+                  <img src="/public/image/18.jpg" alt={siteConfig.name}
                        style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-                */}
+                  }
                 <span className="ts-avatar-initials" style={{
                   fontFamily: 'var(--font-display)', fontSize: '4.2rem',
                   color: '#e8a8c0', letterSpacing: '0.04em',
