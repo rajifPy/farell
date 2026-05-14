@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name:        'Nafis',
+  name:        'Farell Boys',
   title:       'Mahasiswa Matematika Murni',
   description: 'Mahasiswa Matematika Murni yang aktif dalam riset, pengajaran, dan pengembangan sains.',
   role:        'Tutor & Researcher',
