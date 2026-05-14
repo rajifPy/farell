@@ -220,7 +220,7 @@ export default function TentangSayaClient() {
                 overflow: 'hidden',
               }}>
                 {
-                  <img src="public/image/18.jpg" alt={siteConfig.name}
+                  <img src="/image/18.jpg" alt={siteConfig.name}
                        style={{ width:'100%', height:'100%', objectFit:'cover' }} />
                   }
                 <span className="ts-avatar-initials" style={{
