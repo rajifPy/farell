@@ -4,23 +4,24 @@ import { useState, useEffect, useRef } from 'react'
 import { siteConfig } from '@/data/config'
 
 /* ══════════════════════════════════════════
-   DATA — sesuaikan dengan profil Nafis
+   DATA — Matematika Murni
 ══════════════════════════════════════════ */
 const STATS = [
-  { value: '2+',  label: 'Tahun Mengajar' },
-  { value: '3',   label: 'Mata Pelajaran' },
-  { value: '40+', label: 'Siswa Bimbel'   },
+  { value: '3+',  label: 'Tahun Studi'     },
+  { value: '15+', label: 'Siswa Ditutor'   },
+  { value: '4',   label: 'Proyek Riset'    },
 ]
 
 const SKILLS = [
-  { label: 'Matematika tingkat Lanjut',  pct: 90, color: '#c94f35' },
-  { label: 'Time Management',             pct: 78, color: '#8a7d3a' },
-  { label: 'Pemograman',     pct: 82, color: '#6b1f3a' },
-  { label: 'Komunikasi',     pct: 75, color: '#d4604a' },
+  { label: 'Analisis & Kalkulus',      pct: 92, color: '#c94f35' },
+  { label: 'Aljabar Linear',           pct: 88, color: '#8a7d3a' },
+  { label: 'Pemrograman (Python/R)',   pct: 80, color: '#6b1f3a' },
+  { label: 'Statistika & Probabilitas',pct: 85, color: '#d4604a' },
 ]
 
 const INTERESTS = [
-  'Science', 'Education', 'Technology', 'Mathematics', 
+  'Analisis Real', 'Teori Bilangan', 'Topologi',
+  'Matematika Komputasi', 'Data Science', 'Pemodelan Matematika',
 ]
 
 /* ══════════════════════════════════════════
@@ -159,7 +160,6 @@ export default function TentangSayaClient() {
           .ts-sidebar { padding: 32px 20px !important; }
           .ts-content { padding: clamp(20px,4vw,36px) clamp(16px,4vw,28px) 40px !important; }
         }
-
         @media (max-width: 768px) {
           .ts-layout  { flex-direction: column !important; }
           .ts-sidebar {
@@ -171,7 +171,6 @@ export default function TentangSayaClient() {
             padding: 28px 20px !important;
           }
           .ts-deco    { display: none !important; }
-          .ts-sidebar-social { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px 14px !important; }
           .ts-avatar-sq        { width: 88px !important; height: 88px !important; }
           .ts-avatar-sq-shadow { width: 88px !important; height: 88px !important; }
           .ts-avatar-wrap      { width: 88px !important; height: 88px !important; }
@@ -179,7 +178,6 @@ export default function TentangSayaClient() {
           .ts-stats > div { flex: 1 1 80px !important; }
           .ts-content { padding: 20px 20px 40px !important; }
         }
-
         @media (max-width: 480px) {
           .ts-sidebar { flex-direction: column !important; align-items: flex-start !important; padding: 20px 16px !important; }
           .ts-content { padding: 16px 16px 32px !important; }
@@ -189,7 +187,7 @@ export default function TentangSayaClient() {
       <div className="ts-layout" style={{ display: 'flex', minHeight: 'calc(100vh - var(--nav-height))' }}>
 
         {/* ══════════════════
-            SIDEBAR
+            SIDEBAR — pink
         ══════════════════ */}
         <aside
           className="ts-sidebar page-sidebar page-sidebar--sticky"
@@ -206,51 +204,38 @@ export default function TentangSayaClient() {
               className="ts-avatar-wrap"
               style={{ position: 'relative', width: '130px', height: '130px', marginBottom: '24px' }}
             >
-              {/* Offset shadow square */}
-              <div
-                className="ts-avatar-sq-shadow"
-                style={{
-                  position: 'absolute', top: '10px', left: '10px',
-                  width: '130px', height: '130px',
-                  backgroundColor: 'rgba(26,26,26,0.2)',
-                }}
-              />
-              {/* Main avatar square */}
-              <div
-                className="ts-avatar-sq"
-                style={{
-                  position: 'absolute', top: 0, left: 0,
-                  width: '130px', height: '130px',
-                  backgroundColor: '#1a1a1a',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  overflow: 'hidden',
-                }}
-              >
+              <div className="ts-avatar-sq-shadow" style={{
+                position: 'absolute', top: '10px', left: '10px',
+                width: '130px', height: '130px',
+                backgroundColor: 'rgba(26,26,26,0.2)',
+              }} />
+              <div className="ts-avatar-sq" style={{
+                position: 'absolute', top: 0, left: 0,
+                width: '130px', height: '130px',
+                backgroundColor: '#1a1a1a',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                overflow: 'hidden',
+              }}>
                 {/*
                   Punya foto? Ganti ini dengan:
                   <img src="/foto-profil.jpg" alt={siteConfig.name}
                        style={{ width:'100%', height:'100%', objectFit:'cover' }} />
                 */}
-                <span
-                  className="ts-avatar-initials"
-                  style={{
-                    fontFamily: 'var(--font-display)', fontSize: '4.2rem',
-                    color: '#e8a8c0', letterSpacing: '0.04em',
-                    userSelect: 'none', lineHeight: 1,
-                  }}
-                >
+                <span className="ts-avatar-initials" style={{
+                  fontFamily: 'var(--font-display)', fontSize: '4.2rem',
+                  color: '#e8a8c0', letterSpacing: '0.04em',
+                  userSelect: 'none', lineHeight: 1,
+                }}>
                   {siteConfig.name.charAt(0)}
                 </span>
               </div>
-
               {/* Left accent stripe */}
               <div style={{
                 position: 'absolute', top: 0, left: '-10px',
                 width: '4px', height: '100%',
                 background: 'linear-gradient(to bottom, #c94f35, #6b1f3a)',
               }} />
-
-              {/* Bottom-right accent dot */}
+              {/* Bottom-right dot */}
               <div style={{
                 position: 'absolute', bottom: '-3px', right: '-3px',
                 width: '22px', height: '22px',
@@ -259,14 +244,12 @@ export default function TentangSayaClient() {
               }} />
             </div>
 
-            {/* Name */}
             <p style={{
               fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 2.4vw, 2rem)',
               letterSpacing: '0.03em', textTransform: 'uppercase',
               color: '#1a1a1a', lineHeight: 1, marginBottom: '10px',
             }}>{siteConfig.name}</p>
 
-            {/* Role row */}
             <div className="ts-role-row" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '20px', height: '2px', backgroundColor: '#c94f35', flexShrink: 0 }} />
               <p style={{
@@ -277,44 +260,28 @@ export default function TentangSayaClient() {
             </div>
           </div>
 
-          {/* ── Motto / Quote ── */}
+          {/* ── Motto ── */}
           <div style={{ position: 'relative', zIndex: 1 }}>
-            {/* Opening quotation mark */}
             <div style={{
-              fontFamily:    'var(--font-display)',
-              fontSize:      '3.5rem',
-              lineHeight:    0.6,
-              color:         'rgba(26,26,26,0.18)',
-              marginBottom:  '10px',
-              userSelect:    'none',
+              fontFamily: 'var(--font-display)', fontSize: '3.5rem',
+              lineHeight: 0.6, color: 'rgba(26,26,26,0.18)',
+              marginBottom: '10px', userSelect: 'none',
             }}>"</div>
-
             <p style={{
-              fontFamily:   'var(--font-body)',
-              fontWeight:   500,
-              fontSize:     '0.82rem',
-              lineHeight:   1.75,
-              color:        'rgba(26,26,26,0.72)',
-              fontStyle:    'italic',
+              fontFamily: 'var(--font-body)', fontWeight: 500,
+              fontSize: '0.82rem', lineHeight: 1.75,
+              color: 'rgba(26,26,26,0.72)', fontStyle: 'italic',
               marginBottom: '14px',
             }}>
-              {/*
-                Ganti dengan motto atau kutipan favorit Nafis.
-              */}
-              Hei antek-antek asing
+              Matematika adalah bahasa yang dengannya Tuhan menulis alam semesta.
             </p>
-
-            {/* Attribution line */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '16px', height: '1.5px', backgroundColor: '#c94f35' }} />
               <span style={{
-                fontFamily:    'var(--font-body)',
-                fontWeight:    700,
-                fontSize:      '0.58rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color:         'rgba(26,26,26,0.45)',
-              }}>Moto Hidup</span>
+                fontFamily: 'var(--font-body)', fontWeight: 700,
+                fontSize: '0.58rem', letterSpacing: '0.16em', textTransform: 'uppercase',
+                color: 'rgba(26,26,26,0.45)',
+              }}>Galileo Galilei</span>
             </div>
           </div>
         </aside>
@@ -325,21 +292,17 @@ export default function TentangSayaClient() {
         <main className="page-main">
           <div className="name-bar"><p>{siteConfig.name}</p></div>
 
-          <div
-            className="ts-content"
-            style={{ padding: 'clamp(24px,5vw,48px) clamp(20px,5vw,44px) 56px', maxWidth: '720px' }}
-          >
+          <div className="ts-content" style={{
+            padding: 'clamp(24px,5vw,48px) clamp(20px,5vw,44px) 56px', maxWidth: '720px',
+          }}>
 
             {/* Name + title */}
             <div style={{ marginBottom: '28px' }}>
-              <h2
-                className="ts-name-text"
-                style={{
-                  fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
-                  lineHeight: 0.9, letterSpacing: '0.02em', textTransform: 'uppercase',
-                  color: '#1a1a1a', marginBottom: '10px',
-                }}
-              >
+              <h2 className="ts-name-text" style={{
+                fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
+                lineHeight: 0.9, letterSpacing: '0.02em', textTransform: 'uppercase',
+                color: '#1a1a1a', marginBottom: '10px',
+              }}>
                 {siteConfig.name}
               </h2>
               <p style={{
@@ -357,21 +320,21 @@ export default function TentangSayaClient() {
             {/* Bio */}
             <div className="ts-bio-block">
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.9, color: '#3a3a3a', marginBottom: '18px' }}>
-                Saya adalah mahasiswa Program Studi Pendidikan Agama Islam di UIN Sunan Ampel
-                Surabaya, sekaligus aktif sebagai guru bimbingan belajar di Lembaga Bimbel
-                Al-Falah. Saya percaya bahwa ilmu yang bermanfaat adalah ilmu yang diamalkan
-                untuk kemaslahatan bersama.
+                Saya adalah mahasiswa Program Studi Matematika Murni yang memiliki minat
+                mendalam pada analisis real, aljabar abstrak, dan pemodelan matematika.
+                Bagi saya, matematika bukan sekadar angka — melainkan cara berpikir yang
+                terstruktur dan universal untuk memahami dunia.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.9, color: '#3a3a3a', marginBottom: '18px' }}>
-                Fokus studi saya mencakup kurikulum PAI, metode pembelajaran Islam modern,
-                dan literasi keagamaan. Saya telah menjalani PPL di MAN 1 Surabaya serta
-                KKN di Desa Sidoarjo, di mana saya mengembangkan program bimbingan
-                Al-Qur&apos;an dan pelatihan literasi digital bagi masyarakat.
+                Selain aktif dalam perkuliahan, saya menjalani peran sebagai tutor matematika
+                untuk siswa SMA dan mahasiswa semester awal, membantu mereka membangun
+                fondasi yang kuat dalam kalkulus, aljabar linear, dan statistika. Saya juga
+                terlibat dalam beberapa proyek riset komputasi menggunakan Python dan R.
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: 1.9, color: '#3a3a3a' }}>
-                Sebelumnya, saya menyelesaikan pendidikan di MA Nurul Huda Surabaya dan
-                aktif di Himpunan Mahasiswa Jurusan PAI divisi akademik, terlibat dalam
-                seminar pendidikan Islam dan kajian keislaman rutin lintas angkatan.
+                Di luar akademik, saya aktif dalam komunitas olimpiade matematika dan
+                organisasi mahasiswa sains, di mana saya sering terlibat dalam pembuatan
+                soal dan pelatihan tim kompetisi tingkat universitas.
               </p>
             </div>
 
