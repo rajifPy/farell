@@ -7,21 +7,24 @@ import { siteConfig } from '@/data/config'
    DATA — Matematika Murni
 ══════════════════════════════════════════ */
 const STATS = [
-  { value: '3+',  label: 'Tahun Studi'     },
-  { value: '15+', label: 'Siswa Ditutor'   },
-  { value: '4',   label: 'Proyek Riset'    },
+  { value: '3+',  label: 'Tahun Studi'       },
+  { value: '20+', label: 'Siswa Ditutor'     },
+  { value: '5',   label: 'Proyek Riset'      },
 ]
 
 const SKILLS = [
-  { label: 'Analisis & Kalkulus',      pct: 92, color: '#c94f35' },
-  { label: 'Aljabar Linear',           pct: 88, color: '#8a7d3a' },
-  { label: 'Pemrograman (Python/R)',   pct: 80, color: '#6b1f3a' },
-  { label: 'Statistika & Probabilitas',pct: 85, color: '#d4604a' },
+  { label: 'Analisis Real & Kalkulus',      pct: 93, color: '#c94f35' },
+  { label: 'Aljabar Linear & Abstrak',      pct: 89, color: '#8a7d3a' },
+  { label: 'Pemrograman (Python / R)',      pct: 82, color: '#6b1f3a' },
+  { label: 'Statistika & Probabilitas',     pct: 86, color: '#d4604a' },
+  { label: 'Teori Bilangan',                pct: 80, color: '#8a7d3a' },
 ]
 
 const INTERESTS = [
   'Analisis Real', 'Teori Bilangan', 'Topologi',
-  'Matematika Komputasi', 'Data Science', 'Pemodelan Matematika',
+  'Aljabar Abstrak', 'Matematika Komputasi',
+  'Data Science', 'Pemodelan Matematika',
+  'Olimpiade Matematika',
 ]
 
 /* ══════════════════════════════════════════
@@ -142,7 +145,7 @@ export default function TentangSayaClient() {
           transition: background-color 0.15s, color 0.15s, border-color 0.15s;
           word-break: break-all; max-width: 100%;
         }
-        .ts-email-cta:hover { background-color: #e8a8c0; border-color: #e8a8c0; color: #1a1a1a; }
+        .ts-email-cta:hover { background-color: #c94f35; border-color: #c94f35; color: #f0eeea; }
 
         .ts-divider {
           height: 2px;
@@ -226,7 +229,7 @@ export default function TentangSayaClient() {
                   color: '#e8a8c0', letterSpacing: '0.04em',
                   userSelect: 'none', lineHeight: 1,
                 }}>
-                  {siteConfig.name.charAt(0)}
+                  F
                 </span>
               </div>
               {/* Left accent stripe */}
@@ -290,7 +293,7 @@ export default function TentangSayaClient() {
             MAIN CONTENT
         ══════════════════ */}
         <main className="page-main">
-          <div className="name-bar"><p>{siteConfig.name}</p></div>
+          <div className="name-bar"><p>{siteConfig.name} — Matematika Murni</p></div>
 
           <div className="ts-content" style={{
             padding: 'clamp(24px,5vw,48px) clamp(20px,5vw,44px) 56px', maxWidth: '720px',
