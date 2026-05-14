@@ -1,20 +1,21 @@
 export const siteConfig = {
   name:        'Nafis',
-  title:       'Mahasiswa Pendidikan Agama Islam',
-  description: 'Mahasiswa Kupu-Kupu',
-  role:        'Guru',
+  title:       'Mahasiswa Matematika Murni',
+  description: 'Mahasiswa Matematika Murni yang aktif dalam riset, pengajaran, dan pengembangan sains.',
+  role:        'Tutor & Researcher',
 
-  email: 'nama.anda[at]institusi.ac.id',
+  email: 'nafis[at]universitasanda.ac.id',
 
   links: {
-    orcid:    'https://orcid.org/0000-0000-0000-0000',
-    linkedin: 'https://linkedin.com/in/username',
+    linkedin:  'https://linkedin.com/in/username',
+    github:    'https://github.com/username',
+    instagram: 'https://instagram.com/username',
   },
 
   nav: [
-    { label: 'Home',          href: '/'              },
-    { label: 'Tentang_Saya',  href: '/tentang-saya'  },
-    { label: 'Pengalaman',    href: '/pengalaman'    },
-    { label: 'Galeri',        href: '/galeri'        },
+    { label: 'Home',         href: '/'             },
+    { label: 'Tentang_Saya', href: '/tentang-saya' },
+    { label: 'Pengalaman',   href: '/pengalaman'   },
+    { label: 'Galeri',       href: '/galeri'        },
   ],
 }
